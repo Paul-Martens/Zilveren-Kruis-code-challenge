@@ -1,116 +1,61 @@
+<script setup lang="ts">
+import SelectField from '../../../components/form-fields/SelectField.vue';
+import InputField from '../../../components/form-fields/InputField.vue';
+import BsnField from '../../../components/form-fields/BsnField.vue';
+import RadioField from '../../../components/form-fields/RadioField.vue';
+import { useApplicationForm } from '../../../stores/application-form';
+
+const { personalInformation } = useApplicationForm();
+</script>
+
 <template>
     <h2>Gegevens</h2>
+
     <div class="form-group">
         <h3>Reden van aanmelding</h3>
-        <div class="form-input my-4">
-            <label
-                id="aanmeldreden-label"
-                class="input__title"
-            >
-                Wat is de reden van uw aanvraag?
-            </label>
-            <div class="input__group">
-                <select class="form-control">
-                    <option>
-                        Nieuwe werkgever met collectiviteit bij Zilveren Kruis
-                    </option>
-                    <option selected>
-                        Overstappen per 1-1-2023 naar Zilveren Kruis
-                    </option>
-                </select>
-            </div>
-        </div>
+
+        <SelectField
+            v-model="personalInformation.applicationReason"
+            label="Wat is de reden van uw aanvraag?"
+            :options="[
+                'Nieuwe werkgever met collectiviteit bij Zilveren Kruis',
+                'Overstappen per 1-1-2023 naar Zilveren Kruis'
+            ]"
+        />
     </div>
+
     <div class="form-group">
         <h3>Persoonlijke gegevens</h3>
-        <div class="form-input my-4">
-            <div class="input__group">
-                <label class="input__title">Naam</label>
-                <input
-                    class="input__field form-control"
-                    type="text"
-                />
-            </div>
-        </div>
-        <div class="form-input my-4">
-            <div class="input__group">
-                <label class="input__title"> Tussenvoegsels </label>
-                <input
-                    class="input__field form-control"
-                    type="text"
-                />
-            </div>
-        </div>
-        <div class="form-input my-4">
-            <div class="input__group">
-                <label class="input__title">Achternaam</label>
-                <input
-                    class="input__field form-control"
-                    type="text"
-                />
-            </div>
-        </div>
-        <div class="form-input my-4">
-            <div class="input__group">
-                <label class="input__title">Geslacht</label>
-                <div class="form-row">
-                    <div class="radio custom-radio radio__option">
-                        <input
-                            id="man"
-                            class="radio__input custom-control-input"
-                            type="radio"
-                            name="geslacht"
-                        />
-                        <label
-                            class="radio__label custom-control-label"
-                            for="man"
-                        >
-                            Man
-                        </label>
-                    </div>
-                    <div class="radio custom-radio radio__option">
-                        <input
-                            id="vrouw"
-                            class="radio__input custom-control-input"
-                            type="radio"
-                            name="geslacht"
-                        />
-                        <label
-                            class="radio__label custom-control-label"
-                            for="vrouw"
-                        >
-                            Vrouw
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-input my-4">
-            <div class="input__group">
-                <label class="input__title"> Geboortedatum </label>
-                <input
-                    class="input__field form-control"
-                    type="text"
-                />
-            </div>
-        </div>
-        <div class="form-input my-4">
-            <div class="input__group">
-                <label class="input__title"> Burgerservicenummer </label>
-                <input
-                    class="input__field form-control is-invalid"
-                    type="text"
-                />
-            </div>
-            <div
-                class="input__feedback invalid-feedback mt-1"
-                aria-live="polite"
-            >
-                <span
-                    >Helaas is het ingevoerde burgerservicenummer niet geldig.
-                    Probeer het opnieuw.</span
-                >
-            </div>
-        </div>
+
+        <InputField
+            label="Naam"
+            v-model="personalInformation.firstName"
+        />
+
+        <InputField
+            label="Tussenvoegsels"
+            v-model="personalInformation.middleName"
+        />
+
+        <InputField
+            label="Achternaam"
+            v-model="personalInformation.lastName"
+        />
+
+        <RadioField
+            label="Geslacht"
+            :options="['Man', 'Vrouw']"
+            v-model="personalInformation.gender"
+        />
+
+        <InputField
+            label="Geboortedatum"
+            v-model="personalInformation.birthDate"
+        />
+
+        <BsnField
+            label="Burgerservicenummer"
+            v-model="personalInformation.citizenServiceNumber"
+        />
     </div>
 </template>
