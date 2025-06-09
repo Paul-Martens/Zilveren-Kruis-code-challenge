@@ -1,10 +1,15 @@
 <script lang="ts" setup>
-interface Props {
+interface Option {
     label: string;
-    options: string[];
+    value: string;
 }
 
-const { label } = defineProps<Props>();
+interface Props {
+    label: string;
+    options: string[] | Option[];
+}
+
+const { label, options } = defineProps<Props>();
 const model = defineModel<string>();
 </script>
 
@@ -19,10 +24,11 @@ const model = defineModel<string>();
                 v-model="model"
             >
                 <option
-                    :key="option"
                     v-for="option in options"
+                    :key="typeof option === 'string' ? option : option.label"
+                    :value="typeof option === 'string' ? option : option.value"
                 >
-                    {{ option }}
+                    {{ typeof option === 'string' ? option : option.label }}
                 </option>
             </select>
         </div>
