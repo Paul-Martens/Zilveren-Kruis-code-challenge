@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 interface Props {
     label: string;
+    type?: string;
 }
 
-const { label } = defineProps<Props>();
+const { label, type = 'text' } = defineProps<Props>();
 const model = defineModel<string>();
 </script>
 
@@ -13,7 +14,7 @@ const model = defineModel<string>();
             <label class="input__title">{{ label }}</label>
             <input
                 class="input__field form-control"
-                type="text"
+                :type="type"
                 v-model="model"
             />
         </div>
