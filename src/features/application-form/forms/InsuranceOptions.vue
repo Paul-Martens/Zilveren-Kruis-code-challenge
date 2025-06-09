@@ -84,11 +84,26 @@ const { insuranceOptions } = useApplicationForm();
             v-model="insuranceOptions.additionalInsurance"
             label="Kies uw aanvullende verzekering"
             :options="[
-                'Geen aanvullende verzekering geselecteerd',
-                'Aanvullend 1 - € 21,38 per jaar',
-                'Aanvullend 2 - € 85,06 per jaar',
-                'Aanvullend 3 - € 198,63 per jaar',
-                'Aanvullend 4 - € 359,73 per jaar'
+                {
+                    label: 'Geen aanvullende verzekering geselecteerd',
+                    value: 'Geen aanvullende verzekering geselecteerd'
+                },
+                {
+                    label: 'Aanvullend 1 - € 21,38 per jaar',
+                    value: 'Aanvullend 1'
+                },
+                {
+                    label: 'Aanvullend 2 - € 85,06 per jaar',
+                    value: 'Aanvullend 2'
+                },
+                {
+                    label: 'Aanvullend 3 - € 198,63 per jaar',
+                    value: 'Aanvullend 3'
+                },
+                {
+                    label: 'Aanvullend 4 - € 359,73 per jaar',
+                    value: 'Aanvullend 4'
+                }
             ]"
         />
     </div>
@@ -98,10 +113,22 @@ const { insuranceOptions } = useApplicationForm();
             v-model="insuranceOptions.dentalInsurance"
             label="Kies uw tandartsverzekering"
             :options="[
-                'Geen tandartsverzekering geselecteerd',
-                'Tand 1 - € 80,28 per jaar',
-                'Tand 2 - € 221,65 per jaar',
-                'Tand 3 - € 449,36 per jaar'
+                {
+                    label: 'Geen tandartsverzekering geselecteerd',
+                    value: 'Geen tandartsverzekering geselecteerd'
+                },
+                {
+                    label: 'Tand 1 - € 80,28 per jaar',
+                    value: 'Tand 1'
+                },
+                {
+                    label: 'Tand 2 - € 221,65 per jaar',
+                    value: 'Tand 2'
+                },
+                {
+                    label: 'Tand 3 - € 449,36 per jaar',
+                    value: 'Tand 3'
+                }
             ]"
         />
     </div>

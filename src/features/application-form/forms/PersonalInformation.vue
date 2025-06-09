@@ -51,6 +51,7 @@ const { personalInformation } = useApplicationForm();
         <InputField
             label="Geboortedatum"
             v-model="personalInformation.birthDate"
+            type="date"
         />
 
         <BsnField
