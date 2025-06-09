@@ -16,7 +16,7 @@ const useApplicationForm = defineStore('application-form', () => {
 
     const insuranceOptions = {
         insurance: ref<string>(),
-        termsOfPayment: ref<string>('per jaar'),
+        paymentTerm: ref<'yearly' | 'quarterly' | 'monthly'>('yearly'),
         excessDeductible: ref<string>('€ 385 - verplicht eigen risico'),
         additionalInsurance: ref<string>(
             'Geen aanvullende verzekering geselecteerd'

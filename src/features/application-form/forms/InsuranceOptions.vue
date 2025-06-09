@@ -40,9 +40,22 @@ const { insuranceOptions } = useApplicationForm();
 
     <div class="form-group">
         <SelectField
-            v-model="insuranceOptions.termsOfPayment"
+            v-model="insuranceOptions.paymentTerm"
             label="Kies je betaaltermijn"
-            :options="['per maand', 'per kwartaal', 'per jaar']"
+            :options="[
+                {
+                    label: 'per maand',
+                    value: 'monthly'
+                },
+                {
+                    label: 'per kwartaal',
+                    value: 'quarterly'
+                },
+                {
+                    label: 'per jaar',
+                    value: 'yearly'
+                }
+            ]"
         />
     </div>
 
